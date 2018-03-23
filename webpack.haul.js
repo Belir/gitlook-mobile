@@ -11,7 +11,10 @@ module.exports = ({ platform }, defaults) => ({
       containers: path.join(appPath, 'containers'),
       services: path.join(appPath, 'services'),
       utils: path.join(appPath, 'utils'),
-      views: path.join(appPath, 'views'),
+      scenes: path.join(appPath, 'scenes'),
+      sagas: path.join(appPath, 'sagas'),
+      actions: path.join(appPath, 'actions'),
+      reducers: path.join(appPath, 'reducers'),
     }
   }
 });
