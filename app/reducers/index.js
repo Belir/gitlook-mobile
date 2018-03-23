@@ -1,5 +1,6 @@
 import createSagaMiddleware from 'redux-saga';
-import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootSaga from 'sagas';
 import searchReducer from 'reducers/searchReducer';
@@ -10,11 +11,16 @@ const reducers = combineReducers({
   search: searchReducer,
 });
 
+const enhancers = applyMiddleware(
+  sagaMiddleware,
+);
+
+const composeEnhancers = __DEV__ ?
+  composeWithDevTools : compose;
+
 const store = createStore(
   reducers,
-  applyMiddleware(
-    sagaMiddleware,
-  ),
+  composeEnhancers(enhancers),
 );
 
 sagaMiddleware.run(rootSaga);
