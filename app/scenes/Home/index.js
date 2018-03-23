@@ -1,9 +1,12 @@
 import React, { PureComponent } from 'react';
 import { View, Platform } from 'react-native';
+import { connect } from 'react-redux';
 
 import SceneView from 'components/SceneView';
 import Input from 'components/Input';
 import Button from 'components/Button';
+
+import { updateSearchPhrase } from 'actions/searchActions';
 
 import styles from './styles';
 
@@ -22,7 +25,7 @@ class Home extends PureComponent {
   }
 
   _handleSearch = () => {
-
+    this.props.updateSearchPhrase(this.state.searchPhrase);
   }
 
   render() {
@@ -43,6 +46,14 @@ class Home extends PureComponent {
       </SceneView>
     )
   }
-}
+};
 
-export default Home;
+const mapDispatchToProps = {
+  updateSearchPhrase,
+};
+
+const mapStateToProps = (state) => ({
+  searchPhrase: state.search.searchPhrase,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
