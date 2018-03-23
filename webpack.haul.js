@@ -9,6 +9,7 @@ module.exports = ({ platform }, defaults) => ({
     alias: {
       components: path.join(appPath, 'components'),
       containers: path.join(appPath, 'containers'),
+      constants: path.join(appPath, 'constants'),
       services: path.join(appPath, 'services'),
       utils: path.join(appPath, 'utils'),
       scenes: path.join(appPath, 'scenes'),
