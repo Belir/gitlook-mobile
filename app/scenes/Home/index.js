@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, Platform } from 'react-native';
+import { View, Image } from 'react-native';
 import { connect } from 'react-redux';
 
 import SceneView from 'components/SceneView';
@@ -8,6 +8,7 @@ import Button from 'components/Button';
 
 import { updateSearchPhrase } from 'actions/searchActions';
 
+import logo from 'assets/images/gitlook-logo.png';
 import styles from './styles';
 
 class Home extends PureComponent {
@@ -32,6 +33,10 @@ class Home extends PureComponent {
     return (
       <SceneView align='center'>
         <View style={styles.searchFormWrapper}>
+          <Image
+            style={styles.logo}
+            source={logo}
+          />
           <Input
             onChangeText={this._onChangeSearchInput}
             value={this.state.searchPhrase}

@@ -7,6 +7,7 @@ module.exports = ({ platform }, defaults) => ({
   resolve: {
     ...defaults.resolve,
     alias: {
+      assets: path.join(appPath, 'assets'),
       components: path.join(appPath, 'components'),
       containers: path.join(appPath, 'containers'),
       constants: path.join(appPath, 'constants'),
