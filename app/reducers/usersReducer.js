@@ -7,6 +7,7 @@ import {
 import {
   STARTED, SUCCEDED, FAILED, FINISHED
 } from 'constants/statuses';
+import { arraysToKeyIdObjects } from 'utils/transformers';
 
 const initialState = {
   data: {},
@@ -33,8 +34,9 @@ const usersReducer = (state = initialState, action) => {
         name: SUCCEDED,
         isLoading: false,
       };
+      const newData = arraysToKeyIdObjects(action.payload.data.items, 'id');
 
-      return { ...state, status: newStatus, ...action.payload };
+      return { ...state, status: newStatus, data: newData };
     }
 
     case FETCH_USERS_FAILED: {

@@ -1,7 +1,16 @@
 import { UPDATE_SEARCH_PHRASE } from 'constants/actionTypes';
+import {
+  STARTED, SUCCEDED, FAILED, FINISHED
+} from 'constants/statuses';
 
 const initialState = {
-  searchPhrase: '',
+  data: {
+    phrase: '',
+  },
+  status: {
+    name: FINISHED,
+    isLoading: false,
+  },
   error: {},
 };
 
