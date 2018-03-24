@@ -11,8 +11,8 @@ export default StyleSheet.create({
   },
   logo: {
     position: 'absolute',
-    width: 120,
-    height: 120,
-    top: -100,
+    width: 80,
+    height: 80,
+    top: -70,
   }
 });
