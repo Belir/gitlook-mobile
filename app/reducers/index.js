@@ -4,11 +4,13 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootSaga from 'sagas';
 import searchReducer from 'reducers/searchReducer';
+import usersReducer from 'reducers/usersReducer';
 
 const sagaMiddleware = createSagaMiddleware();
 
 const reducers = combineReducers({
   search: searchReducer,
+  users: usersReducer,
 });
 
 const enhancers = applyMiddleware(
@@ -24,5 +26,5 @@ const store = createStore(
 );
 
 sagaMiddleware.run(rootSaga);
-
+console.log(store.getState())
 export default store;
