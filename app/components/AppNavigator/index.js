@@ -4,7 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import Home from 'scenes/Home';
 import SearchResults from 'scenes/SearchResults';
 
-const routes = {
+const AppNavigator = StackNavigator({
   Home: {
     screen: Home,
     headerMode: 'none',
@@ -15,9 +15,10 @@ const routes = {
   },
   SearchResults: {
     screen: SearchResults,
+    navigationOptions: ({ navigation }) => ({
+      title: `Results for: ${navigation.state.params.phrase}`,
+    }),
   }
-};
-
-const AppNavigator = StackNavigator(routes);
+});
 
 export default AppNavigator;
