@@ -1,10 +1,10 @@
-import { UPDATE_SEARCH_PHRASE } from 'constants/actionTypes';
+import { UPDATE_SEARCH_PHRASE_REQUESTED } from 'constants/actionTypes';
 
 export const updateSearchPhrase = (newPhrase) => ({
-  type: UPDATE_SEARCH_PHRASE,
+  type: UPDATE_SEARCH_PHRASE_REQUESTED,
   payload: {
     data: {
-      searchPhrase: newPhrase,
+      phrase: newPhrase,
     }
   },
 });
