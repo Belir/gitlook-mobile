@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 
 import store from 'reducers';
 
-import Routes from 'components/Routes';
+import Routes from 'containers/Routes';
 
 const App = (props) => {
   return (
