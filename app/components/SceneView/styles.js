@@ -9,7 +9,6 @@ export default StyleSheet.create({
   },
   wrapperStyles: {
     flex: 1,
-    paddingHorizontal: 20,
   },
   wrapperStart: {
     alignItems: 'flex-start',

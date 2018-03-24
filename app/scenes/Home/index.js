@@ -31,7 +31,10 @@ class Home extends PureComponent {
 
   render() {
     return (
-      <SceneView align='center'>
+      <SceneView
+        align='center'
+        wPadding
+      >
         <View style={styles.searchFormWrapper}>
           <Image
             style={styles.logo}
@@ -57,8 +60,10 @@ const mapDispatchToProps = {
   updateSearchPhrase,
 };
 
-const mapStateToProps = (state) => ({
-  searchPhrase: state.search.searchPhrase,
-});
+const mapStateToProps = (state) => {
+  console.log(state)
+  return ({
+  searchPhrase: state.search.data.phrase,
+})};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

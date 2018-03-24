@@ -16,7 +16,13 @@ const alignStyles = {
 const SceneView = (props) => {
   return (
     <SafeAreaView style={styles.container}>
-      <View style={[styles.wrapperStyles, alignStyles[props.align]]}>
+      <View
+        style={[
+          styles.wrapperStyles,
+          alignStyles[props.align],
+          props.wPadding && { paddingHorizontal: 20 }]
+        }
+      >
         {props.children}
       </View>
     </SafeAreaView>
@@ -25,6 +31,7 @@ const SceneView = (props) => {
 
 SceneView.defaultProps = {
   align: 'start',
+  wPadding: false,
 };
 
 export default SceneView;
