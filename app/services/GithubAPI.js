@@ -14,3 +14,9 @@ export const Search = {
     get(`/search/users?q=${query}`)
   )
 };
+
+export const Users = {
+  single: (userLogin) => (
+    get(`/users/${userLogin}`)
+  )
+}

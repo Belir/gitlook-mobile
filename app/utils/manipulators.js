@@ -9,7 +9,7 @@ export const updateKeyIdObject = (originalObject, newObject, idKey) => (
 export const updateItemInArray = (originalArray, newItem, idKey) => {
   const newArray = originalArray.concat();
   const oldItem = originalArray.find((el) => el[idKey] === newItem[idKey]);
-  const oldItemIndex = originalArray.indexOf(odlItem);
+  const oldItemIndex = originalArray.indexOf(oldItem);
   newArray[oldItemIndex] = newItem;
 
   return oldItemIndex != -1 && newArray || oldArray;
