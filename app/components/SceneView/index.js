@@ -20,8 +20,7 @@ const SceneView = (props) => {
         style={[
           styles.wrapperStyles,
           alignStyles[props.align],
-          props.wPadding && { paddingHorizontal: 20 }]
-        }
+          props.wPadding && { paddingHorizontal: 20 }]}
       >
         {props.children}
       </View>

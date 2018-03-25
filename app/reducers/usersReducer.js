@@ -38,6 +38,7 @@ const usersReducer = (state = initialState, action) => {
         name: SUCCEDED,
         isLoading: false,
       };
+
       const newData = action.payload.data.items;
 
       return { ...state, status: newStatus, data: newData };
