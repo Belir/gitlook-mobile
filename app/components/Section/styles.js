@@ -24,4 +24,10 @@ export default StyleSheet.create({
   errorText: {
     color: RED,
   },
+  emptyContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 10,
+  }
 });

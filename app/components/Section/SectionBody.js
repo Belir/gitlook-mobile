@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import { View, FlatList, Text, TouchableOpacity } from 'react-native';
 
 import Spinner from 'components/Spinner';
@@ -32,6 +32,19 @@ class SectionBody extends PureComponent {
     <View style={styles.separator} />
   )
 
+  renderFooter = () => (
+    <Fragment>
+      {
+        this.props.items.length === 0 &&
+          <View style={styles.emptyContainer}>
+            <Text>
+              Unfortunately nothing :(
+            </Text>
+          </View>
+      }
+    </Fragment>
+  )
+
   itemKeyExtractor = (item) => item[this.props.itemKey]
 
   render() {
@@ -47,6 +60,7 @@ class SectionBody extends PureComponent {
             data={items}
             renderItem={this.renderItem}
             ItemSeparatorComponent={this.renderSeparator}
+            ListFooterComponent={this.renderFooter}
             keyExtractor={this.itemKeyExtractor}
         />}
         { error &&

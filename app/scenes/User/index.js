@@ -3,12 +3,17 @@ import { connect } from 'react-redux';
 
 import SceneView from 'components/SceneView';
 import User from 'components/User';
+import Spinner from 'components/Spinner';
 
 class SearchResults extends PureComponent {
   render() {
     return (
       <SceneView align='top'>
-        <User {...this.props.user} />
+        {
+          this.props.isLoading ?
+            <Spinner />
+          : <User {...this.props.user} />
+        }
       </SceneView>
     )
   }
@@ -20,7 +25,8 @@ const mapStateToProps = (state) => {
   const user = state.users.data.find((user) => user.login === currentNavParams.userLogin);
 
   return ({
-    user
+    isLoading: state.users.status.isLoading,
+    user,
   })
 };
 
