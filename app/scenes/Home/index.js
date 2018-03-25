@@ -60,10 +60,8 @@ const mapDispatchToProps = {
   updateSearchPhrase,
 };
 
-const mapStateToProps = (state) => {
-  console.log(state)
-  return ({
+const mapStateToProps = (state) => ({
   searchPhrase: state.search.data.phrase,
-})};
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

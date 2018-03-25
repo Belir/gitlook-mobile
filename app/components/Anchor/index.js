@@ -3,7 +3,6 @@ import { TouchableOpacity } from 'react-native';
 
 class Anchor extends PureComponent {
   _onPressAnchor = () => {
-    console.log(this.props);
     this.props.onPress(this.props.id);
   }
 

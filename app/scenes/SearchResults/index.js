@@ -24,7 +24,7 @@ class SearchResults extends PureComponent {
         <View style={styles.section}>
           <Section
             headingText='Users'
-            items={Object.values(this.props.users.data)}
+            items={this.props.users.data}
             itemKey='login'
             isLoading={this.props.users.status.isLoading}
             itemComponent={User}
