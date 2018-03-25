@@ -45,39 +45,34 @@ const User = (props) => {
             <View style={styles.detailsContainer}>
               <TableRow
                 title='Blog:'
-                cols={[{
-                  key: '1',
+                col={{
                   text: blog || 'Empty',
                   url: blog || false,
-                }]}
+                }}
               />
               <TableRow
                 title='Bio:'
-                cols={[{
-                  key: '1',
+                col={{
                   text: bio || 'Empty',
-                }]}
+                }}
               />
               <TableRow
                 title='Followers:'
-                cols={[{
-                  key: '1',
+                col={{
                   text: followers,
-                }]}
+                }}
               />
               <TableRow
                 title='Following:'
-                cols={[{
-                  key: '1',
+                col={{
                   text: following,
-                }]}
+                }}
               />
               <TableRow
                 title='Gists:'
-                cols={[{
-                  key: '1',
+                col={{
                   text: public_gists,
-                }]}
+                }}
               />
             </View>
         }

@@ -45,35 +45,31 @@ const Repository = (props) => {
               <View style={styles.detailsContainer}>
                 <TableRow
                   title='Home:'
-                  cols={[{
-                    key: '1',
+                  col={{
                     text: homepage || 'Empty',
                     url: homepage || false,
-                  }]}
+                  }}
                 />
 
                 <TableRow
                   title='Info:'
-                  cols={[{
-                    key: '1',
+                  col={{
                     text: description || 'Empty',
-                  }]}
+                  }}
                 />
 
                 <TableRow
                   title='Stars:'
-                  cols={[{
-                    key: '1',
+                  col={{
                     text: stargazers_count,
-                  }]}
+                  }}
                 />
 
                 <TableRow
                   title='Open issues:'
-                  cols={[{
-                    key: '1',
+                  col={{
                     text: open_issues_count,
-                  }]}
+                  }}
                 />
               </View>
             }

@@ -6,7 +6,7 @@ import styles from './styles';
 
 const TableRow = (props) => {
   const {
-    title, cols
+    title, col
   } = props;
 
   return (
@@ -24,22 +24,18 @@ const TableRow = (props) => {
           {title}
         </Text>
       </View>
-      {
-        props.cols.map((col) => (
-          <View key={col.key} style={styles.col}>
-            {
-              col.url ?
-                <Link
-                  to={col.url}
-                  text={col.text}
-                />
-              : <Text>
-                {col.text}
-              </Text>
-            }
-          </View>
-        ))
-      }
+      <View style={styles.col}>
+        {
+          col.url ?
+            <Link
+              to={col.url}
+              text={col.text}
+            />
+          : <Text>
+            {col.text}
+          </Text>
+        }
+      </View>
     </View>
   )
 };
