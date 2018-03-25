@@ -8,7 +8,7 @@ import styles from './styles';
 const Section = (props) => {
   const {
     title, items, itemComponent, itemProps, itemKey,
-    isLoading, error, horizontal
+    isLoading, error, horizontal, emptyText
   } = props;
 
   return (
@@ -19,6 +19,7 @@ const Section = (props) => {
       }
       <SectionBody
         items={items}
+        emptyText={emptyText}
         ItemComponent={itemComponent}
         itemProps={itemProps}
         itemKey={itemKey}

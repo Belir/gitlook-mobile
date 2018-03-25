@@ -34,7 +34,7 @@ class SectionBody extends PureComponent {
 
   renderFooter = () => {
     const {
-      isLoading, items
+      isLoading, items, emptyText
     } = this.props;
 
     return (
@@ -43,7 +43,7 @@ class SectionBody extends PureComponent {
           !isLoading && items.length === 0 &&
             <View style={styles.emptyContainer}>
               <Text>
-                Unfortunately nothing :(
+                {emptyText}
               </Text>
             </View>
         }
@@ -81,6 +81,7 @@ class SectionBody extends PureComponent {
 SectionBody.defaultProps = {
   isLoading: false,
   horizontal: false,
+  emptyText: 'Unfortunately nothing :(',
 }
 
 export default SectionBody;

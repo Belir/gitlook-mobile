@@ -56,7 +56,7 @@ class SearchResults extends PureComponent {
             title='Repositories'
             items={this.props.repositories.data}
             itemKey='full_name'
-            isLoading={this.props.repositories.status.isLoading}
+            isLoading={this.props.isRepositoriesLoading}
             itemComponent={Repository}
             itemProps={{
               isLightMode: true,
@@ -77,6 +77,7 @@ const mapDispatchToProps = {
 const mapStateToProps = (state) => ({
   users: state.users,
   repositories: state.repositories,
+  isRepositoriesLoading: state.repositories.status.repositories.isLoading,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);

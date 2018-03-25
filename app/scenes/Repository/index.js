@@ -28,12 +28,12 @@ class RepositoryScene extends PureComponent {
     return (
       <SceneView align='top'>
         {
-          this.props.isLoading ?
+          this.props.isRepositoriesLoading ?
             <Spinner />
             : <Repository
               {...this.props.repository}
               collaborators={this.props.repository.collaborators || []}
-              isLoading={this.props.isLoading}
+              isCollaboratorsLoading={this.props.isCollaboratorsLoading}
               onCollaboratorsExpand={this._onCollaboratorsExpand}
               onCollaboratorsPress={this._onCollaboratorPress}
             />
@@ -54,9 +54,11 @@ const mapStateToProps = (state, ownProps) => {
   const repository = state.repositories.data.find((repo) =>
     repo.full_name === `${navParams.ownerLogin}/${navParams.repoName}`
   );
+  const { repositories, collaborators } = state.repositories.status;
 
   return ({
-    isLoading: state.repositories.status.isLoading,
+    isCollaboratorsLoading: collaborators.isLoading,
+    isRepositoriesLoading: repositories.isLoading,
     repository,
   })
 };

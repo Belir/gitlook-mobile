@@ -20,8 +20,14 @@ import { updateItemInArray } from 'utils/manipulators';
 const initialState = {
   data: {},
   status: {
-    name: FINISHED,
-    isLoading: false,
+    repositories: {
+      name: FINISHED,
+      isLoading: false,
+    },
+    collaborators: {
+      name: FINISHED,
+      isLoading: false,
+    },
   },
   error: {},
 };
@@ -34,7 +40,11 @@ const usersReducer = (state = initialState, action) => {
         isLoading: true,
       };
 
-      return { ...state, status: newStatus, error: {} };
+      return {
+        ...state,
+        status: { ...state.status, repositories: newStatus },
+        error: {},
+      };
     }
 
     case FETCH_REPOSITORIES_SUCCEEDED: {
@@ -44,7 +54,11 @@ const usersReducer = (state = initialState, action) => {
       };
       const newData = action.payload.data.items;
 
-      return { ...state, status: newStatus, data: newData };
+      return {
+        ...state,
+        status: { ...state.status, repositories: newStatus },
+        data: newData,
+      };
     }
 
     case FETCH_REPOSITORIES_FAILED: {
@@ -53,7 +67,11 @@ const usersReducer = (state = initialState, action) => {
         isLoading: false,
       }
 
-      return { ...state, status: newStatus, error: action.payload.error };
+      return {
+        ...state,
+        status: { ...state.status, repositories: newStatus },
+        error: action.payload.error,
+      };
     }
 
     case FETCH_REPOSITORIES_FINISHED: {
@@ -62,7 +80,7 @@ const usersReducer = (state = initialState, action) => {
         isLoading: false,
       };
 
-      return { ...state, status: newStatus };
+      return { ...state, status: { ...state.status, repositories: newStatus } };
     }
 
     case FETCH_REPO_INFO_STARTED: {
@@ -71,7 +89,11 @@ const usersReducer = (state = initialState, action) => {
         isLoading: true,
       };
 
-      return { ...state, status: newStatus, error: {} };
+      return {
+        ...state,
+        status: { ...state.status, repositories: newStatus },
+        error: {},
+      };
     }
 
     case FETCH_REPO_INFO_SUCCEEDED: {
@@ -81,7 +103,11 @@ const usersReducer = (state = initialState, action) => {
       };
       const newData = updateItemInArray(state.data, action.payload.data, 'full_name');
 
-      return { ...state, status: newStatus, data: newData };
+      return {
+        ...state,
+        status: { ...state.status, repositories: newStatus },
+        data: newData,
+      };
     }
 
     case FETCH_REPO_INFO_FAILED: {
@@ -90,7 +116,11 @@ const usersReducer = (state = initialState, action) => {
         isLoading: false,
       }
 
-      return { ...state, status: newStatus, error: action.payload.error };
+      return {
+        ...state,
+        status: { ...state.status, repositories: newStatus },
+        error: action.payload.error,
+      };
     }
 
     case FETCH_REPO_INFO_FINISHED: {
@@ -99,7 +129,10 @@ const usersReducer = (state = initialState, action) => {
         isLoading: false,
       };
 
-      return { ...state, status: newStatus };
+      return {
+        ...state,
+        status: { ...state.status, repositories: newStatus },
+      };
     }
 
     case FETCH_REPO_COLLABORATORS_STARTED: {
@@ -108,7 +141,11 @@ const usersReducer = (state = initialState, action) => {
         isLoading: true,
       };
 
-      return { ...state, status: newStatus, error: {} };
+      return {
+        ...state,
+        status: { ...state.status, collaborators: newStatus },
+        error: {},
+      };
     }
 
     case FETCH_REPO_COLLABORATORS_SUCCEEDED: {
@@ -118,7 +155,11 @@ const usersReducer = (state = initialState, action) => {
       };
       const newData = updateItemInArray(state.data, action.payload.data, 'full_name');
 
-      return { ...state, status: newStatus, data: newData };
+      return {
+        ...state,
+        status: { ...state.status, collaborators: newStatus },
+        data: newData,
+      };
     }
 
     case FETCH_REPO_COLLABORATORS_FAILED: {
@@ -127,7 +168,11 @@ const usersReducer = (state = initialState, action) => {
         isLoading: false,
       }
 
-      return { ...state, status: newStatus, error: action.payload.error };
+      return {
+        ...state,
+        status: { ...state.status, collaborators: newStatus },
+        error: action.payload.error,
+      };
     }
 
     case FETCH_REPO_COLLABORATORS_FINISHED: {
@@ -136,7 +181,10 @@ const usersReducer = (state = initialState, action) => {
         isLoading: false,
       };
 
-      return { ...state, status: newStatus };
+      return {
+        ...state,
+        status: { ...state.status, collaborators: newStatus },
+      };
     }
 
     default:
