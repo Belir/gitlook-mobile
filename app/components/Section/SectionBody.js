@@ -17,7 +17,7 @@ class SectionBody extends PureComponent {
 
     return (
       <Anchor
-        id={item.id}
+        id={item[itemKey]}
         onPress={onPress}
       >
         <ItemComponent

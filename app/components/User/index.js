@@ -7,7 +7,7 @@ import styles from './styles';
 
 const User = (props) => {
   const {
-    isLightMode, avatar_url, login
+    isLightMode, avatar_url, login, name, company, location
   } = props;
 
   return (
@@ -20,9 +20,21 @@ const User = (props) => {
           }} />
         </View>
         <View style={styles.basicContainer}>
+          {
+            !isLightMode &&
+            <Text>
+              {name || 'No name'} from {location || "github doesn't know"}
+            </Text>
+          }
           <Text style={styles.loginText}>
             @{login}
           </Text>
+          {
+            !isLightMode && company &&
+            <Text>
+              Working @ {company}
+            </Text>
+          }
         </View>
       </View>
       {

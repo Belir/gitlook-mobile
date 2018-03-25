@@ -3,6 +3,7 @@ import { StackNavigator } from 'react-navigation';
 // Views
 import Home from 'scenes/Home';
 import SearchResults from 'scenes/SearchResults';
+import User from 'scenes/User';
 
 const AppNavigator = StackNavigator({
   Home: {
@@ -18,7 +19,13 @@ const AppNavigator = StackNavigator({
     navigationOptions: ({ navigation }) => ({
       title: `Results for: ${navigation.state.params.phrase}`,
     }),
-  }
+  },
+  UserScreen: {
+    screen: User,
+    navigationOptions: ({ navigation }) => ({
+      title: `User: ${navigation.state.params.userLogin}`,
+    }),
+  },
 });
 
 export default AppNavigator;

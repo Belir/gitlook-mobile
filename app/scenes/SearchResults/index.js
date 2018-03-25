@@ -7,11 +7,13 @@ import Section from 'components/Section';
 import User from 'components/User';
 import Repository from 'components/Repository';
 
+import { requestFetchUserInfo } from 'actions/usersActions';
+
 import styles from './styles';
 
 class SearchResults extends PureComponent {
-  _onUserPress = (id) => {
-
+  _onUserPress = (userLogin) => {
+    this.props.requestFetchUserInfo(userLogin);
   }
 
   _onRepositoryPress = (id) => {
@@ -37,7 +39,7 @@ class SearchResults extends PureComponent {
         <View style={styles.section}>
           <Section
             headingText='Repositories'
-            items={Object.values(this.props.repositories.data)}
+            items={this.props.repositories.data}
             itemKey='full_name'
             isLoading={this.props.repositories.status.isLoading}
             itemComponent={Repository}
@@ -53,7 +55,7 @@ class SearchResults extends PureComponent {
 };
 
 const mapDispatchToProps = {
-
+  requestFetchUserInfo,
 };
 
 const mapStateToProps = (state) => ({
