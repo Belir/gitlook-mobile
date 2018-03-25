@@ -32,24 +32,30 @@ class SectionBody extends PureComponent {
     <View style={styles.separator} />
   )
 
-  renderFooter = () => (
-    <Fragment>
-      {
-        this.props.items.length === 0 &&
-          <View style={styles.emptyContainer}>
-            <Text>
-              Unfortunately nothing :(
-            </Text>
-          </View>
-      }
-    </Fragment>
-  )
+  renderFooter = () => {
+    const {
+      isLoading, items
+    } = this.props;
+
+    return (
+      <Fragment>
+        {
+          !isLoading && items.length === 0 &&
+            <View style={styles.emptyContainer}>
+              <Text>
+                Unfortunately nothing :(
+              </Text>
+            </View>
+        }
+      </Fragment>
+    )
+  }
 
   itemKeyExtractor = (item) => item[this.props.itemKey]
 
   render() {
     const {
-      items, isLoading, error
+      items, isLoading, error, horizontal
     } = this.props;
 
     return (
@@ -62,6 +68,7 @@ class SectionBody extends PureComponent {
             ItemSeparatorComponent={this.renderSeparator}
             ListFooterComponent={this.renderFooter}
             keyExtractor={this.itemKeyExtractor}
+            horizontal={horizontal}
         />}
         { error &&
           <Text>{error}</Text>
@@ -69,6 +76,11 @@ class SectionBody extends PureComponent {
       </View>
     )
   }
+}
+
+SectionBody.defaultProps = {
+  isLoading: false,
+  horizontal: false,
 }
 
 export default SectionBody;

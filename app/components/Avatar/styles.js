@@ -2,8 +2,8 @@ import { StyleSheet, PixelRatio } from 'react-native';
 
 export default StyleSheet.create({
   avatar: {
-    height: 50,
-    width: 50,
-    borderRadius: 50 / PixelRatio.get(),
+    height: 60,
+    width: 60,
+    borderRadius: 60 / PixelRatio.get(),
   }
 });

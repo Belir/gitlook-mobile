@@ -8,7 +8,7 @@ import styles from './styles';
 const Section = (props) => {
   const {
     headingText, items, itemComponent, itemProps, itemKey,
-    isLoading, error
+    isLoading, error, horizontal
   } = props;
 
   return (
@@ -20,6 +20,7 @@ const Section = (props) => {
         itemProps={itemProps}
         itemKey={itemKey}
         isLoading={isLoading}
+        horizontal={horizontal}
       />
     </View>
   )
@@ -30,6 +31,7 @@ Section.defaultProps = {
   isLoading: true,
   bodyHeight: 200,
   itemProps: {},
+  horizontal: false,
 };
 
 export { SectionHeading, SectionBody };
