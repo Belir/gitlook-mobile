@@ -5,13 +5,13 @@ import styles from './styles';
 
 const SectionHeading = (props) => {
   const {
-    headingText
+    title
   } = props;
 
   return (
     <View style={styles.headingContainer}>
       <Text style={styles.heading}>
-        {headingText.toUpperCase()}
+        {title.toUpperCase()}
       </Text>
     </View>
   )

@@ -7,13 +7,13 @@ import styles from './styles';
 
 const Section = (props) => {
   const {
-    headingText, items, itemComponent, itemProps, itemKey,
+    title, items, itemComponent, itemProps, itemKey,
     isLoading, error, horizontal
   } = props;
 
   return (
     <View style={styles.container}>
-      <SectionHeading headingText={headingText} />
+      <SectionHeading title={title} />
       <SectionBody
         items={items}
         ItemComponent={itemComponent}

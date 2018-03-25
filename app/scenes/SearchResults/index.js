@@ -31,7 +31,7 @@ class SearchResults extends PureComponent {
       <SceneView align='top'>
         <View style={styles.section}>
           <Section
-            headingText='Users'
+            title='Users'
             items={this.props.users.data}
             itemKey='login'
             isLoading={this.props.users.status.isLoading}
@@ -44,7 +44,7 @@ class SearchResults extends PureComponent {
         </View>
         <View style={styles.section}>
           <Section
-            headingText='Repositories'
+            title='Repositories'
             items={this.props.repositories.data}
             itemKey='full_name'
             isLoading={this.props.repositories.status.isLoading}
