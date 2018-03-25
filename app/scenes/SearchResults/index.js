@@ -13,6 +13,12 @@ import styles from './styles';
 
 class SearchResults extends PureComponent {
   _onUserPress = (userLogin) => {
+    this.props.navigation.navigate({
+      routeName: 'UserScreen',
+      params: {
+        userLogin,
+      },
+    });
     this.props.requestFetchUserInfo(userLogin);
   }
 

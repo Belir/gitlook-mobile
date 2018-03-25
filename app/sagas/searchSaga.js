@@ -1,5 +1,4 @@
 import { all, takeLatest, put } from 'redux-saga/effects';
-import { NavigationActions } from 'react-navigation';
 
 import {
   UPDATE_SEARCH_PHRASE_REQUESTED,
@@ -23,13 +22,6 @@ function* updatePhrase(action) {
 
     yield put(requestFetchUsers(data.phrase));
     yield put(requestFetchRepositories(data.phrase));
-
-    yield put(NavigationActions.navigate({
-      routeName: 'SearchResults',
-      params: {
-        phrase: data.phrase
-      }
-    }));
 
   } catch (error) {
     yield put({ type: UPDATE_SEARCH_PHRASE_FAILED, payload: { error } });

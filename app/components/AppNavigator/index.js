@@ -17,12 +17,14 @@ const AppNavigator = StackNavigator({
   SearchResults: {
     screen: SearchResults,
     navigationOptions: ({ navigation }) => ({
+      headerBackTitle: 'Back',
       title: `Results for: ${navigation.state.params.phrase}`,
     }),
   },
   UserScreen: {
     screen: User,
     navigationOptions: ({ navigation }) => ({
+      headerBackTitle: 'Back',
       title: `User: ${navigation.state.params.userLogin}`,
     }),
   },

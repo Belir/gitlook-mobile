@@ -1,5 +1,4 @@
 import { all, takeLatest, put, call } from 'redux-saga/effects';
-import { NavigationActions } from 'react-navigation';
 
 import {
   FETCH_USERS_REQUESTED,
@@ -41,13 +40,6 @@ function* getUserInfo(action) {
     const response = yield call(Users.single, userLogin);
 
     yield put({ type: FETCH_USER_INFO_SUCCEEDED, payload: { data: response.data } });
-
-    yield put(NavigationActions.navigate({
-      routeName: 'UserScreen',
-      params: {
-        userLogin,
-      },
-    }));
 
     yield put({ type: FETCH_USER_INFO_FINISHED });
 

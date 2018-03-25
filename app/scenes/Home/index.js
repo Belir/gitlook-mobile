@@ -26,6 +26,13 @@ class Home extends PureComponent {
   }
 
   _handleSearch = () => {
+    this.props.navigation.navigate({
+      routeName: 'SearchResults',
+      params: {
+        phrase: this.state.searchPhrase
+      }
+    });
+
     this.props.updateSearchPhrase(this.state.searchPhrase);
   }
 
