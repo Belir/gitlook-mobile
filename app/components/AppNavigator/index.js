@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import Home from 'scenes/Home';
 import SearchResults from 'scenes/SearchResults';
 import User from 'scenes/User';
+import Repository from 'scenes/Repository';
 
 const AppNavigator = StackNavigator({
   Home: {
@@ -26,6 +27,13 @@ const AppNavigator = StackNavigator({
     navigationOptions: ({ navigation }) => ({
       headerBackTitle: 'Back',
       title: `User: ${navigation.state.params.userLogin}`,
+    }),
+  },
+  RepositoryScreen: {
+    screen: Repository,
+    navigationOptions: ({ navigation }) => ({
+      headerBackTitle: 'Back',
+      title: `Repo: ${navigation.state.params.ownerLogin}/${navigation.state.params.repoName}`,
     }),
   },
 });

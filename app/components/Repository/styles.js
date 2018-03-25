@@ -19,5 +19,8 @@ export default StyleSheet.create({
   },
   avatarContainer: {
     paddingRight: 10,
-  }
+  },
+  detailsContainer: {
+    paddingTop: 10,
+  },
 });

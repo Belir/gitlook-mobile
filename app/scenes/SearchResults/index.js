@@ -8,6 +8,7 @@ import User from 'components/User';
 import Repository from 'components/Repository';
 
 import { requestFetchUserInfo } from 'actions/usersActions';
+import { requestFetchRepoInfo } from 'actions/repositoriesActions';
 
 import styles from './styles';
 
@@ -22,8 +23,16 @@ class SearchResults extends PureComponent {
     this.props.requestFetchUserInfo(userLogin);
   }
 
-  _onRepositoryPress = (id) => {
-
+  _onRepositoryPress = (fullName) => {
+    const ownerAndRepoName = fullName.split('/');
+    this.props.navigation.navigate({
+      routeName: 'RepositoryScreen',
+      params: {
+        ownerLogin: ownerAndRepoName[0],
+        repoName: ownerAndRepoName[1],
+      },
+    });
+    this.props.requestFetchRepoInfo(ownerAndRepoName[0], ownerAndRepoName[1]);
   }
 
   render() {
@@ -62,6 +71,7 @@ class SearchResults extends PureComponent {
 
 const mapDispatchToProps = {
   requestFetchUserInfo,
+  requestFetchRepoInfo,
 };
 
 const mapStateToProps = (state) => ({

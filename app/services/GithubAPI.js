@@ -19,4 +19,10 @@ export const Users = {
   single: (userLogin) => (
     get(`/users/${userLogin}`)
   )
-}
+};
+
+export const Repositories = {
+  single: (ownerLogin, repoName) => (
+    get(`/repos/${ownerLogin}/${repoName}`)
+  )
+};
