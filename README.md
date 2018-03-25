@@ -14,7 +14,7 @@ yarn install
 ```
 4. Run haul for specific platform or for all of them
 ```
-yarn haul-(ios|android)
+yarn haul-(ios|android|all)
 ```
 5. Run your app
 ```

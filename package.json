@@ -8,6 +8,7 @@
     "haul": "haul",
     "haul-ios": "haul start --platform ios",
     "haul-android": "haul start --platform android",
+    "haul-all": "haul start --platform all",
     "run-ios": "react-native run-ios",
     "run-andriod": "react-native run-android"
   },
