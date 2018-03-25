@@ -13,7 +13,10 @@ const Section = (props) => {
 
   return (
     <View style={styles.container}>
-      <SectionHeading title={title} />
+      {
+        title &&
+          <SectionHeading title={title} />
+      }
       <SectionBody
         items={items}
         ItemComponent={itemComponent}

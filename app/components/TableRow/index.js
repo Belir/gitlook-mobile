@@ -6,7 +6,7 @@ import styles from './styles';
 
 const TableRow = (props) => {
   const {
-    titleText, cols
+    title, cols
   } = props;
 
   return (
@@ -21,7 +21,7 @@ const TableRow = (props) => {
           }]}
       >
         <Text>
-          {titleText}
+          {title}
         </Text>
       </View>
       {

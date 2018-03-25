@@ -7,6 +7,9 @@ export default StyleSheet.create({
     flex: 1,
     padding: 10,
   },
+  section: {
+    flex: 2,
+  },
   row: {
     flex: 1,
     flexDirection: 'row',
