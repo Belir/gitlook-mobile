@@ -15,6 +15,10 @@ class SectionBody extends PureComponent {
     )
   }
 
+  renderSeparator = () => (
+    <View style={styles.separator} />
+  )
+
   itemKeyExtractor = (item) => item[this.props.itemKey]
 
   render() {
@@ -29,6 +33,7 @@ class SectionBody extends PureComponent {
         : <FlatList
             data={items}
             renderItem={this.renderItem}
+            ItemSeparatorComponent={this.renderSeparator}
             keyExtractor={this.itemKeyExtractor}
         />}
         { error &&

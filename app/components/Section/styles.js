@@ -17,6 +17,10 @@ export default StyleSheet.create({
   bodyContainer: {
     flex: 1
   },
+  separator: {
+    backgroundColor: BLUE,
+    height: 1,
+  },
   errorText: {
     color: RED,
   },
