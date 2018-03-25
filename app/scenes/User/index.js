@@ -19,10 +19,9 @@ class UserScene extends PureComponent {
   }
 };
 
-const mapStateToProps = (state) => {
-  const { routes, index } = state.navigation;
-  const currentNavParams = routes[index].params;
-  const user = state.users.data.find((user) => user.login === currentNavParams.userLogin);
+const mapStateToProps = (state, ownProps) => {
+  const { params: navParams } = ownProps.navigation.state;
+  const user = state.users.data.find((user) => user.login === navParams.userLogin);
 
   return ({
     isLoading: state.users.status.isLoading,

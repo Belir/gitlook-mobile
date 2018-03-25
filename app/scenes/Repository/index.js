@@ -49,11 +49,10 @@ const mapDispatchToProps = {
   requestFetchCollaborators,
 };
 
-const mapStateToProps = (state) => {
-  const { routes, index } = state.navigation;
-  const currentNavParams = routes[index].params;
+const mapStateToProps = (state, ownProps) => {
+  const { params: navParams } = ownProps.navigation.state;
   const repository = state.repositories.data.find((repo) =>
-    repo.full_name === `${currentNavParams.ownerLogin}/${currentNavParams.repoName}`
+    repo.full_name === `${navParams.ownerLogin}/${navParams.repoName}`
   );
 
   return ({
