@@ -10,7 +10,7 @@ export const updateItemInArray = (originalArray, newItem, idKey) => {
   const newArray = originalArray.concat();
   const oldItem = originalArray.find((el) => el[idKey] === newItem[idKey]);
   const oldItemIndex = originalArray.indexOf(oldItem);
-  newArray[oldItemIndex] = newItem;
+  newArray[oldItemIndex] = { ...oldItem, ...newItem };
 
   return oldItemIndex != -1 && newArray || oldArray;
 }
