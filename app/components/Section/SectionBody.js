@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
-import { View, FlatList, Text } from 'react-native';
+import { View, FlatList, Text, TouchableOpacity } from 'react-native';
 
 import Spinner from 'components/Spinner';
+import Anchor from 'components/Anchor';
 import styles from './styles';
 
 class SectionBody extends PureComponent {
@@ -10,8 +11,20 @@ class SectionBody extends PureComponent {
       ItemComponent, itemProps, itemKey
     } = this.props;
 
+    const {
+      onPress, ...restItemProps
+    } = itemProps;
+
     return (
-      <ItemComponent {...item} />
+      <Anchor
+        id={item.id}
+        onPress={onPress}
+      >
+        <ItemComponent
+          {...item}
+          {...restItemProps}
+        />
+      </Anchor>
     )
   }
 

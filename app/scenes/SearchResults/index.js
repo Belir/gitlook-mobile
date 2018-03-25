@@ -9,6 +9,10 @@ import User from 'components/User';
 import styles from './styles';
 
 class SearchResults extends PureComponent {
+  _onUserPress = (id) => {
+
+  }
+
   render() {
     return (
       <SceneView align='top'>
@@ -19,7 +23,10 @@ class SearchResults extends PureComponent {
             itemKey='login'
             isLoading={this.props.users.status.isLoading}
             itemComponent={User}
-            itemProps={{ isLightMode: true }}
+            itemProps={{
+              isLightMode: true,
+              onPress: this._onUserPress,
+            }}
           />
         </View>
       </SceneView>
