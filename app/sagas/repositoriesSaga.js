@@ -11,6 +11,11 @@ import {
   FETCH_REPO_INFO_SUCCEEDED,
   FETCH_REPO_INFO_FAILED,
   FETCH_REPO_INFO_FINISHED,
+  FETCH_REPO_COLLABORATORS_REQUESTED,
+  FETCH_REPO_COLLABORATORS_STARTED,
+  FETCH_REPO_COLLABORATORS_SUCCEEDED,
+  FETCH_REPO_COLLABORATORS_FAILED,
+  FETCH_REPO_COLLABORATORS_FINISHED,
 } from 'constants/actionTypes';
 import { Search, Repositories } from 'services/GithubAPI';
 
@@ -20,9 +25,9 @@ function* getRepositories(action) {
   try {
     yield put({ type: FETCH_REPOSITORIES_STARTED });
 
-    const response = yield call(Search.repositories, query);
+    const { data } = yield call(Search.repositories, query);
 
-    yield put({ type: FETCH_REPOSITORIES_SUCCEEDED, payload: { data: response.data } });
+    yield put({ type: FETCH_REPOSITORIES_SUCCEEDED, payload: { data } });
 
     yield put({ type: FETCH_REPOSITORIES_FINISHED });
 
@@ -37,9 +42,9 @@ function* getRepository(action) {
   try {
     yield put({ type: FETCH_REPO_INFO_STARTED });
 
-    const response = yield call(Repositories.single, ownerLogin, repoName);
+    const { data } = yield call(Repositories.single, ownerLogin, repoName);
 
-    yield put({ type: FETCH_REPO_INFO_SUCCEEDED, payload: { data: response.data } });
+    yield put({ type: FETCH_REPO_INFO_SUCCEEDED, payload: { data } });
 
     yield put({ type: FETCH_REPO_INFO_FINISHED });
 
@@ -48,9 +53,33 @@ function* getRepository(action) {
   }
 }
 
+function* getRepositoryCollaborators(action) {
+  const { ownerLogin, repoName } = action.payload;
+
+  try {
+    yield put({ type: FETCH_REPO_COLLABORATORS_STARTED });
+
+    const { data } = yield call(Repositories.collaborators, ownerLogin, repoName);
+
+    yield put({ type: FETCH_REPO_COLLABORATORS_SUCCEEDED, payload: {
+      data: {
+        full_name: `${ownerLogin}/${repoName}`,
+        collaborators: data,
+      },
+    }});
+
+    yield put({ type: FETCH_REPO_COLLABORATORS_FINISHED });
+
+  } catch (error) {
+    console.log(error)
+    yield put({ type: FETCH_REPO_COLLABORATORS_FAILED, payload: { error } });
+  }
+}
+
 export default function* getRepositoriesSaga() {
   yield all([
     takeLatest(FETCH_REPOSITORIES_REQUESTED, getRepositories),
     takeLatest(FETCH_REPO_INFO_REQUESTED, getRepository),
+    takeLatest(FETCH_REPO_COLLABORATORS_REQUESTED, getRepositoryCollaborators),
   ]);
 };

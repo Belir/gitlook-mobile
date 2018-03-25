@@ -24,5 +24,13 @@ export const Users = {
 export const Repositories = {
   single: (ownerLogin, repoName) => (
     get(`/repos/${ownerLogin}/${repoName}`)
+  ),
+  collaborators: (ownerLogin, repoName) => (
+    get(`/repos/${ownerLogin}/${repoName}/collaborators`, {
+      data: {},
+      headers: {
+        'Accept': 'application/vnd.github.hellcat-preview+json',
+      }
+    })
   )
 };
