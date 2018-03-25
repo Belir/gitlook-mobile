@@ -42,44 +42,44 @@ const User = (props) => {
         </View>
         {
           !isLightMode &&
-          <View style={styles.detailsContainer}>
-            <TableRow
-              titleText='Blog:'
-              cols={[{
-                key: '1',
-                text: blog || 'Empty',
-                url: blog || false,
-              }]}
-            />
-            <TableRow
-              titleText='Bio:'
-              cols={[{
-                key: '1',
-                text: bio || 'Empty',
-              }]}
-            />
-            <TableRow
-              titleText='Followers:'
-              cols={[{
-                key: '1',
-                text: followers,
-              }]}
-            />
-            <TableRow
-              titleText='Following:'
-              cols={[{
-                key: '1',
-                text: following,
-              }]}
-            />
-            <TableRow
-              titleText='Gists:'
-              cols={[{
-                key: '1',
-                text: public_gists,
-              }]}
-            />
-          </View>
+            <View style={styles.detailsContainer}>
+              <TableRow
+                title='Blog:'
+                cols={[{
+                  key: '1',
+                  text: blog || 'Empty',
+                  url: blog || false,
+                }]}
+              />
+              <TableRow
+                title='Bio:'
+                cols={[{
+                  key: '1',
+                  text: bio || 'Empty',
+                }]}
+              />
+              <TableRow
+                title='Followers:'
+                cols={[{
+                  key: '1',
+                  text: followers,
+                }]}
+              />
+              <TableRow
+                title='Following:'
+                cols={[{
+                  key: '1',
+                  text: following,
+                }]}
+              />
+              <TableRow
+                title='Gists:'
+                cols={[{
+                  key: '1',
+                  text: public_gists,
+                }]}
+              />
+            </View>
         }
       </View>
     </ScrollView>
