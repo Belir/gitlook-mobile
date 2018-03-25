@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { View, Image } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { connect } from 'react-redux';
 
 import SceneView from 'components/SceneView';
@@ -15,7 +15,11 @@ class Home extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      searchPhrase: ''
+      searchPhrase: '',
+      error: {
+        show: false,
+        msg: 'This field cannot be empty',
+      },
     };
   }
 
@@ -26,6 +30,22 @@ class Home extends PureComponent {
   }
 
   _handleSearch = () => {
+    this.setState({
+      error: {
+        ...this.state.error,
+        show: false,
+      }
+    });
+
+    if (!this._validateForm()) {
+      this.setState({ error: {
+          ...this.state.error,
+          show: true,
+        }
+      });
+      return;
+    }
+
     this.props.navigation.navigate({
       routeName: 'SearchResults',
       params: {
@@ -36,7 +56,16 @@ class Home extends PureComponent {
     this.props.updateSearchPhrase(this.state.searchPhrase);
   }
 
+  _validateForm = () => {
+    const isValid = this.state.searchPhrase !== '';
+    return isValid;
+  }
+
   render() {
+    const {
+      searchPhrase, error,
+    } = this.state;
+
     return (
       <SceneView
         align='center'
@@ -49,7 +78,7 @@ class Home extends PureComponent {
           />
           <Input
             onChangeText={this._onChangeSearchInput}
-            value={this.state.searchPhrase}
+            value={searchPhrase}
             placeholder="Hmm... I'm looking for..."
           />
           <Button
@@ -57,6 +86,12 @@ class Home extends PureComponent {
             title="Search"
             fullWidth={true}
           />
+          {
+            error.show &&
+              <Text style={styles.error}>
+                {error.msg}
+              </Text>
+          }
         </View>
       </SceneView>
     )
