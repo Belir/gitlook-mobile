@@ -71,7 +71,6 @@ function* getRepositoryCollaborators(action) {
     yield put({ type: FETCH_REPO_COLLABORATORS_FINISHED });
 
   } catch (error) {
-    console.log(error)
     yield put({ type: FETCH_REPO_COLLABORATORS_FAILED, payload: { error } });
   }
 }
