@@ -4,7 +4,7 @@ import { View, Text } from 'react-native';
 import Link from 'components/Link';
 import styles from './styles';
 
-const TableView = (props) => {
+const TableRow = (props) => {
   const {
     titleText, cols
   } = props;
@@ -44,8 +44,8 @@ const TableView = (props) => {
   )
 };
 
-TableView.defaultProps = {
+TableRow.defaultProps = {
   titleWidth: 80,
 }
 
-export default TableView;
+export default TableRow;
