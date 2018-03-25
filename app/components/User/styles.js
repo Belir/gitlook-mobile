@@ -18,6 +18,9 @@ export default StyleSheet.create({
     color: GREY,
   },
   avatarContainer: {
-    paddingRight: 10,
-  }
+    paddingRight: 20,
+  },
+  detailsContainer: {
+    paddingTop: 10,
+  },
 });
