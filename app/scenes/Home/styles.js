@@ -3,21 +3,23 @@ import { StyleSheet, Dimensions } from 'react-native';
 import { BLUE, RED } from 'constants/colors';
 
 export default StyleSheet.create({
+  contentWrapper: {
+    alignSelf: 'stretch',
+    paddingBottom: 20,
+  },
   searchFormWrapper: {
-    position: 'relative',
     alignSelf: 'stretch',
     backgroundColor: BLUE,
     borderRadius: 5,
   },
   logo: {
-    position: 'absolute',
+    marginBottom: -8,
     width: 80,
     height: 80,
-    top: -70,
   },
   error: {
     position: 'absolute',
-    bottom: -20,
     color: RED,
+    bottom: 0,
   },
 });

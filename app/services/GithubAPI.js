@@ -1,36 +1,30 @@
-import axios, { create } from 'axios';
+import apiCall from 'utils/apiCall';
 
-const apiClient = create({
-  baseURL: 'https://api.github.com',
-});
-
-const { get } = apiClient;
+const BASE_URL = 'https://api.github.com';
 
 export const Search = {
   repositories: (query) =>  (
-    get(`/search/repositories?q=${query}`)
+    apiCall(`${BASE_URL}/search/repositories?q=${query}`)
   ),
   users: (query) => (
-    get(`/search/users?q=${query}`)
+    apiCall(`${BASE_URL}/search/users?q=${query}`)
   )
 };
 
 export const Users = {
   single: (userLogin) => (
-    get(`/users/${userLogin}`)
+    apiCall(`${BASE_URL}/users/${userLogin}`)
   )
 };
 
 export const Repositories = {
   single: (ownerLogin, repoName) => (
-    get(`/repos/${ownerLogin}/${repoName}`)
+    apiCall(`${BASE_URL}/repos/${ownerLogin}/${repoName}`)
   ),
   collaborators: (ownerLogin, repoName) => (
-    get(`/repos/${ownerLogin}/${repoName}/collaborators`, {
-      data: {},
-      headers: {
-        'Accept': 'application/vnd.github.hellcat-preview+json',
-      }
+    apiCall(`${BASE_URL}/repos/${ownerLogin}/${repoName}/collaborators`,
+      'GET', {
+      'Accept': 'application/vnd.github.hellcat-preview+json',
     })
   )
 };

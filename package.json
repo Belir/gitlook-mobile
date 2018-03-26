@@ -10,10 +10,9 @@
     "haul-android": "haul start --platform android",
     "haul-all": "haul start --platform all",
     "run-ios": "react-native run-ios",
-    "run-andriod": "react-native run-android"
+    "run-android": "react-native run-android"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "haul": "^1.0.0-beta.13",
     "react": "^16.3.0-alpha.1",
     "react-native": "0.54.2",

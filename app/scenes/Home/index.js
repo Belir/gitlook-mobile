@@ -71,21 +71,23 @@ class Home extends PureComponent {
         align='center'
         wPadding
       >
-        <View style={styles.searchFormWrapper}>
+        <View style={styles.contentWrapper}>
           <Image
             style={styles.logo}
             source={logo}
           />
-          <Input
-            onChangeText={this._onChangeSearchInput}
-            value={searchPhrase}
-            placeholder="Hmm... I'm looking for..."
-          />
-          <Button
-            onPress={this._handleSearch}
-            title="Search"
-            fullWidth={true}
-          />
+          <View style={styles.searchFormWrapper}>
+            <Input
+              onChangeText={this._onChangeSearchInput}
+              value={searchPhrase}
+              placeholder="Hmm... I'm looking for..."
+            />
+            <Button
+              onPress={this._handleSearch}
+              title="Search"
+              fullWidth={true}
+            />
+          </View>
           {
             error.show &&
               <Text style={styles.error}>
