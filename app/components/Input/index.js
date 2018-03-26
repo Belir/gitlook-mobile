@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, TextInput } from 'react-native';
 
+import { WHITE } from 'constants/colors';
 import styles from './styles.js';
 
 const Input = (props) => {
@@ -24,6 +25,7 @@ const Input = (props) => {
         clearTextOnFocus={clearTextOnFocus}
         enablesReturnKeyAutomatically={enablesReturnKeyAutomatically}
         onChangeText={onChangeText}
+        underlineColorAndroid={WHITE}
       />
     </View>
   )
