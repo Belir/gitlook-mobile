@@ -35,7 +35,7 @@ const Repository = (props) => {
                 </Text>
                 {
                   !isLightMode && <Text style={styles.ownerText}>
-                    {license.name}
+                    {license && license.name || 'No license'}
                   </Text>
                 }
               </View>
