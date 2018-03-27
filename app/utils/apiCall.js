@@ -8,8 +8,6 @@ const apiCall = async (url, method = 'GET', headers = {}, options = {}) => {
     ...options,
   });
 
-  console.log('headers', headers);
-
   const json = await response.json();
 
   if (response.ok) {

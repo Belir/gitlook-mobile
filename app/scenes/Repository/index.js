@@ -6,10 +6,10 @@ import Repository from 'components/Repository';
 import Spinner from 'components/Spinner';
 
 import { requestFetchUserInfo } from 'actions/usersActions';
-import { requestFetchCollaborators } from 'actions/repositoriesActions';
+import { requestFetchContributors } from 'actions/repositoriesActions';
 
 class RepositoryScene extends PureComponent {
-  _onCollaboratorPress = (userLogin) => {
+  _onContributorPress = (userLogin) => {
     this.props.navigation.navigate({
       routeName: 'UserScreen',
       params: {
@@ -21,7 +21,7 @@ class RepositoryScene extends PureComponent {
 
   componentDidMount() {
     const { owner, name } = this.props.repository;
-    this.props.requestFetchCollaborators(owner.login, name);
+    this.props.requestFetchContributors(owner.login, name);
   }
 
   render() {
@@ -32,10 +32,9 @@ class RepositoryScene extends PureComponent {
             <Spinner />
             : <Repository
               {...this.props.repository}
-              collaborators={this.props.repository.collaborators || []}
-              isCollaboratorsLoading={this.props.isCollaboratorsLoading}
-              onCollaboratorsExpand={this._onCollaboratorsExpand}
-              onCollaboratorsPress={this._onCollaboratorPress}
+              contributors={this.props.repository.contributors || []}
+              isContributorsLoading={this.props.isContributorsLoading}
+              onContributorsPress={this._onContributorPress}
             />
         }
       </SceneView>
@@ -46,7 +45,7 @@ class RepositoryScene extends PureComponent {
 
 const mapDispatchToProps = {
   requestFetchUserInfo,
-  requestFetchCollaborators,
+  requestFetchContributors,
 };
 
 const mapStateToProps = (state, ownProps) => {
@@ -54,10 +53,10 @@ const mapStateToProps = (state, ownProps) => {
   const repository = state.repositories.data.find((repo) =>
     repo.full_name === `${navParams.ownerLogin}/${navParams.repoName}`
   );
-  const { repositories, collaborators } = state.repositories.status;
+  const { repositories, contributors } = state.repositories.status;
 
   return ({
-    isCollaboratorsLoading: collaborators.isLoading,
+    isContributorsLoading: contributors.isLoading,
     isRepositoriesLoading: repositories.isLoading,
     repository,
   })

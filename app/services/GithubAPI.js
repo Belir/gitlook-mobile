@@ -21,10 +21,7 @@ export const Repositories = {
   single: (ownerLogin, repoName) => (
     apiCall(`${BASE_URL}/repos/${ownerLogin}/${repoName}`)
   ),
-  collaborators: (ownerLogin, repoName) => (
-    apiCall(`${BASE_URL}/repos/${ownerLogin}/${repoName}/collaborators`,
-      'GET', {
-      'Accept': 'application/vnd.github.hellcat-preview+json',
-    })
+  contributors: (ownerLogin, repoName) => (
+    apiCall(`${BASE_URL}/repos/${ownerLogin}/${repoName}/contributors`)
   )
 };

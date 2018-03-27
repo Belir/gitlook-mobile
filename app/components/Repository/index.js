@@ -12,7 +12,7 @@ const Repository = (props) => {
   const {
     isLightMode, full_name, owner, homepage, license,
     open_issues_count, stargazers_count, language,
-    description, collaborators, isCollaboratorsLoading
+    description, contributors, isContributorsLoading
   } = props;
 
   return (
@@ -79,15 +79,15 @@ const Repository = (props) => {
           !isLightMode &&
           <View style={styles.section}>
             <Section
-              title='Collaborators'
+              title='Contributors'
               emptyText='Something went wrong :('
-              items={props.collaborators}
+              items={props.contributors}
               itemKey='login'
-              isLoading={props.isCollaboratorsLoading}
+              isLoading={props.isContributorsLoading}
               itemComponent={User}
               itemProps={{
                 isLightMode: true,
-                onPress: props.onCollaboratorsPress,
+                onPress: props.onContributorsPress,
               }}
             />
           </View>

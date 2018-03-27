@@ -11,11 +11,11 @@ import {
   FETCH_REPO_INFO_SUCCEEDED,
   FETCH_REPO_INFO_FAILED,
   FETCH_REPO_INFO_FINISHED,
-  FETCH_REPO_COLLABORATORS_REQUESTED,
-  FETCH_REPO_COLLABORATORS_STARTED,
-  FETCH_REPO_COLLABORATORS_SUCCEEDED,
-  FETCH_REPO_COLLABORATORS_FAILED,
-  FETCH_REPO_COLLABORATORS_FINISHED,
+  FETCH_REPO_CONTRIBUTORS_REQUESTED,
+  FETCH_REPO_CONTRIBUTORS_STARTED,
+  FETCH_REPO_CONTRIBUTORS_SUCCEEDED,
+  FETCH_REPO_CONTRIBUTORS_FAILED,
+  FETCH_REPO_CONTRIBUTORS_FINISHED,
 } from 'constants/actionTypes';
 import { Search, Repositories } from 'services/GithubAPI';
 
@@ -53,25 +53,25 @@ function* getRepository(action) {
   }
 }
 
-function* getRepositoryCollaborators(action) {
+function* getRepositoryContributors(action) {
   const { ownerLogin, repoName } = action.payload;
 
   try {
-    yield put({ type: FETCH_REPO_COLLABORATORS_STARTED });
+    yield put({ type: FETCH_REPO_CONTRIBUTORS_STARTED });
 
-    const { data } = yield call(Repositories.collaborators, ownerLogin, repoName);
+    const { data } = yield call(Repositories.contributors, ownerLogin, repoName);
 
-    yield put({ type: FETCH_REPO_COLLABORATORS_SUCCEEDED, payload: {
+    yield put({ type: FETCH_REPO_CONTRIBUTORS_SUCCEEDED, payload: {
       data: {
         full_name: `${ownerLogin}/${repoName}`,
-        collaborators: data,
+        contributors: data,
       },
     }});
 
-    yield put({ type: FETCH_REPO_COLLABORATORS_FINISHED });
+    yield put({ type: FETCH_REPO_CONTRIBUTORS_FINISHED });
 
   } catch (error) {
-    yield put({ type: FETCH_REPO_COLLABORATORS_FAILED, payload: { error } });
+    yield put({ type: FETCH_REPO_CONTRIBUTORS_FAILED, payload: { error } });
   }
 }
 
@@ -79,6 +79,6 @@ export default function* getRepositoriesSaga() {
   yield all([
     takeLatest(FETCH_REPOSITORIES_REQUESTED, getRepositories),
     takeLatest(FETCH_REPO_INFO_REQUESTED, getRepository),
-    takeLatest(FETCH_REPO_COLLABORATORS_REQUESTED, getRepositoryCollaborators),
+    takeLatest(FETCH_REPO_CONTRIBUTORS_REQUESTED, getRepositoryContributors),
   ]);
 };

@@ -7,10 +7,10 @@ import {
   FETCH_REPO_INFO_SUCCEEDED,
   FETCH_REPO_INFO_FAILED,
   FETCH_REPO_INFO_FINISHED,
-  FETCH_REPO_COLLABORATORS_STARTED,
-  FETCH_REPO_COLLABORATORS_SUCCEEDED,
-  FETCH_REPO_COLLABORATORS_FAILED,
-  FETCH_REPO_COLLABORATORS_FINISHED,
+  FETCH_REPO_CONTRIBUTORS_STARTED,
+  FETCH_REPO_CONTRIBUTORS_SUCCEEDED,
+  FETCH_REPO_CONTRIBUTORS_FAILED,
+  FETCH_REPO_CONTRIBUTORS_FINISHED,
 } from 'constants/actionTypes';
 import {
   STARTED, SUCCEDED, FAILED, FINISHED
@@ -24,7 +24,7 @@ const initialState = {
       name: FINISHED,
       isLoading: false,
     },
-    collaborators: {
+    contributors: {
       name: FINISHED,
       isLoading: false,
     },
@@ -135,7 +135,7 @@ const usersReducer = (state = initialState, action) => {
       };
     }
 
-    case FETCH_REPO_COLLABORATORS_STARTED: {
+    case FETCH_REPO_CONTRIBUTORS_STARTED: {
       const newStatus = {
         name: STARTED,
         isLoading: true,
@@ -143,12 +143,12 @@ const usersReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        status: { ...state.status, collaborators: newStatus },
+        status: { ...state.status, contributors: newStatus },
         error: {},
       };
     }
 
-    case FETCH_REPO_COLLABORATORS_SUCCEEDED: {
+    case FETCH_REPO_CONTRIBUTORS_SUCCEEDED: {
       const newStatus = {
         name: SUCCEDED,
         isLoading: false,
@@ -157,12 +157,12 @@ const usersReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        status: { ...state.status, collaborators: newStatus },
+        status: { ...state.status, contributors: newStatus },
         data: newData,
       };
     }
 
-    case FETCH_REPO_COLLABORATORS_FAILED: {
+    case FETCH_REPO_CONTRIBUTORS_FAILED: {
       const newStatus = {
         name: FAILED,
         isLoading: false,
@@ -170,12 +170,12 @@ const usersReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        status: { ...state.status, collaborators: newStatus },
+        status: { ...state.status, contributors: newStatus },
         error: action.payload.error,
       };
     }
 
-    case FETCH_REPO_COLLABORATORS_FINISHED: {
+    case FETCH_REPO_CONTRIBUTORS_FINISHED: {
       const newStatus = {
         name: FINISHED,
         isLoading: false,
@@ -183,7 +183,7 @@ const usersReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        status: { ...state.status, collaborators: newStatus },
+        status: { ...state.status, contributors: newStatus },
       };
     }
 
