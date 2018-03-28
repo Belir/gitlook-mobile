@@ -8,6 +8,7 @@ import navigationReducer from 'reducers/navigationReducer';
 import searchReducer from 'reducers/searchReducer';
 import usersReducer from 'reducers/usersReducer';
 import repositoriesReducer from 'reducers/repositoriesReducer';
+import contributorsReducer from 'reducers/contributorsReducer';
 
 const sagaMiddleware = createSagaMiddleware();
 const navigatorMiddleware = createReactNavigationReduxMiddleware(
@@ -20,6 +21,7 @@ const reducers = combineReducers({
   search: searchReducer,
   users: usersReducer,
   repositories: repositoriesReducer,
+  contributors: contributorsReducer,
 });
 
 const enhancers = applyMiddleware(

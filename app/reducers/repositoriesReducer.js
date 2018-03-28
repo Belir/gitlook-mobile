@@ -7,10 +7,6 @@ import {
   FETCH_REPO_INFO_SUCCEEDED,
   FETCH_REPO_INFO_FAILED,
   FETCH_REPO_INFO_FINISHED,
-  FETCH_REPO_CONTRIBUTORS_STARTED,
-  FETCH_REPO_CONTRIBUTORS_SUCCEEDED,
-  FETCH_REPO_CONTRIBUTORS_FAILED,
-  FETCH_REPO_CONTRIBUTORS_FINISHED,
 } from 'constants/actionTypes';
 import {
   STARTED, SUCCEDED, FAILED, FINISHED
@@ -32,7 +28,7 @@ const initialState = {
   error: {},
 };
 
-const usersReducer = (state = initialState, action) => {
+const repositoriesReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_REPOSITORIES_STARTED: {
       const newStatus = {
@@ -135,61 +131,9 @@ const usersReducer = (state = initialState, action) => {
       };
     }
 
-    case FETCH_REPO_CONTRIBUTORS_STARTED: {
-      const newStatus = {
-        name: STARTED,
-        isLoading: true,
-      };
-
-      return {
-        ...state,
-        status: { ...state.status, contributors: newStatus },
-        error: {},
-      };
-    }
-
-    case FETCH_REPO_CONTRIBUTORS_SUCCEEDED: {
-      const newStatus = {
-        name: SUCCEDED,
-        isLoading: false,
-      };
-      const newData = updateItemInArray(state.data, action.payload.data, 'full_name');
-
-      return {
-        ...state,
-        status: { ...state.status, contributors: newStatus },
-        data: newData,
-      };
-    }
-
-    case FETCH_REPO_CONTRIBUTORS_FAILED: {
-      const newStatus = {
-        name: FAILED,
-        isLoading: false,
-      }
-
-      return {
-        ...state,
-        status: { ...state.status, contributors: newStatus },
-        error: action.payload.error,
-      };
-    }
-
-    case FETCH_REPO_CONTRIBUTORS_FINISHED: {
-      const newStatus = {
-        name: FINISHED,
-        isLoading: false,
-      };
-
-      return {
-        ...state,
-        status: { ...state.status, contributors: newStatus },
-      };
-    }
-
     default:
       return state;
   };
 };
 
-export default usersReducer;
+export default repositoriesReducer;

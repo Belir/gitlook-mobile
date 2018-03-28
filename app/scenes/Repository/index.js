@@ -6,7 +6,7 @@ import Repository from 'components/Repository';
 import Spinner from 'components/Spinner';
 
 import { requestFetchUserInfo } from 'actions/usersActions';
-import { requestFetchContributors } from 'actions/repositoriesActions';
+import { requestFetchContributors } from 'actions/contributorsActions';
 
 class RepositoryScene extends PureComponent {
   _onContributorPress = (userLogin) => {
@@ -32,7 +32,7 @@ class RepositoryScene extends PureComponent {
             <Spinner />
             : <Repository
               {...this.props.repository}
-              contributors={this.props.repository.contributors || []}
+              contributors={this.props.contributors || []}
               isContributorsLoading={this.props.isContributorsLoading}
               onContributorsPress={this._onContributorPress}
             />
@@ -50,14 +50,15 @@ const mapDispatchToProps = {
 
 const mapStateToProps = (state, ownProps) => {
   const { params: navParams } = ownProps.navigation.state;
+  const repoFullName = `${navParams.ownerLogin}/${navParams.repoName}`;
   const repository = state.repositories.data.find((repo) =>
-    repo.full_name === `${navParams.ownerLogin}/${navParams.repoName}`
+    repo.full_name === repoFullName
   );
-  const { repositories, contributors } = state.repositories.status;
 
   return ({
-    isContributorsLoading: contributors.isLoading,
-    isRepositoriesLoading: repositories.isLoading,
+    isContributorsLoading: state.contributors.status.isLoading,
+    isRepositoriesLoading: state.repositories.status.isLoading,
+    contributors: state.contributors.data[repoFullName],
     repository,
   })
 };
