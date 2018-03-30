@@ -20,3 +20,11 @@ yarn haul-(ios|android|all)
 ```
 yarn run-(ios|android)
 ```
+
+## TODO:
+
+- Infinity scroll
+- Error handling by notifications
+- Cache data (prevent useless fetches)
+- Introduce GraphQL
+
