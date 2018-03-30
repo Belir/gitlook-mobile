@@ -14,16 +14,10 @@ import {
 import { updateItemInArray } from 'utils/manipulators';
 
 const initialState = {
-  data: {},
+  data: [],
   status: {
-    repositories: {
-      name: FINISHED,
-      isLoading: false,
-    },
-    contributors: {
-      name: FINISHED,
-      isLoading: false,
-    },
+    name: FINISHED,
+    isLoading: false,
   },
   error: {},
 };
@@ -38,7 +32,7 @@ const repositoriesReducer = (state = initialState, action) => {
 
       return {
         ...state,
-        status: { ...state.status, repositories: newStatus },
+        status: newStatus,
         error: {},
       };
     }
@@ -50,11 +44,7 @@ const repositoriesReducer = (state = initialState, action) => {
       };
       const newData = action.payload.data.items;
 
-      return {
-        ...state,
-        status: { ...state.status, repositories: newStatus },
-        data: newData,
-      };
+      return { ...state, status: newStatus, data: newData };
     }
 
     case FETCH_REPOSITORIES_FAILED: {
@@ -63,11 +53,7 @@ const repositoriesReducer = (state = initialState, action) => {
         isLoading: false,
       }
 
-      return {
-        ...state,
-        status: { ...state.status, repositories: newStatus },
-        error: action.payload.error,
-      };
+      return { ...state, status: newStatus, error: action.payload.error };
     }
 
     case FETCH_REPOSITORIES_FINISHED: {
@@ -76,7 +62,7 @@ const repositoriesReducer = (state = initialState, action) => {
         isLoading: false,
       };
 
-      return { ...state, status: { ...state.status, repositories: newStatus } };
+      return { ...state, status: newStatus };
     }
 
     case FETCH_REPO_INFO_STARTED: {
@@ -85,11 +71,7 @@ const repositoriesReducer = (state = initialState, action) => {
         isLoading: true,
       };
 
-      return {
-        ...state,
-        status: { ...state.status, repositories: newStatus },
-        error: {},
-      };
+      return { ...state, status: newStatus, error: {} };
     }
 
     case FETCH_REPO_INFO_SUCCEEDED: {
@@ -99,11 +81,7 @@ const repositoriesReducer = (state = initialState, action) => {
       };
       const newData = updateItemInArray(state.data, action.payload.data, 'full_name');
 
-      return {
-        ...state,
-        status: { ...state.status, repositories: newStatus },
-        data: newData,
-      };
+      return { ...state, status: newStatus, data: newData };
     }
 
     case FETCH_REPO_INFO_FAILED: {
@@ -112,11 +90,7 @@ const repositoriesReducer = (state = initialState, action) => {
         isLoading: false,
       }
 
-      return {
-        ...state,
-        status: { ...state.status, repositories: newStatus },
-        error: action.payload.error,
-      };
+      return { ...state, status: newStatus, error: action.payload.error };
     }
 
     case FETCH_REPO_INFO_FINISHED: {
@@ -125,10 +99,7 @@ const repositoriesReducer = (state = initialState, action) => {
         isLoading: false,
       };
 
-      return {
-        ...state,
-        status: { ...state.status, repositories: newStatus },
-      };
+      return { ...state, status: newStatus };
     }
 
     default:
