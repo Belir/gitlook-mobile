@@ -6,6 +6,8 @@ import {
   UPDATE_SEARCH_PHRASE_SUCCEEDED,
   UPDATE_SEARCH_PHRASE_FAILED,
   UPDATE_SEARCH_PHRASE_FINISHED,
+  CLEAN_REPOSITORIES,
+  CLEAN_USERS,
 } from 'constants/actionTypes';
 import { requestFetchUsers } from 'actions/usersActions';
 import { requestFetchRepositories } from 'actions/repositoriesActions';
@@ -15,6 +17,9 @@ function* updatePhrase(action) {
 
   try {
     yield put({ type: UPDATE_SEARCH_PHRASE_STARTED });
+
+    yield put({ type: CLEAN_REPOSITORIES });
+    yield put({ type: CLEAN_USERS });
 
     yield put({ type: UPDATE_SEARCH_PHRASE_SUCCEEDED, payload: { data } });
 

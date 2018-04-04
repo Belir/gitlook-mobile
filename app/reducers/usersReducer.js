@@ -7,6 +7,7 @@ import {
   FETCH_USER_INFO_SUCCEEDED,
   FETCH_USER_INFO_FAILED,
   FETCH_USER_INFO_FINISHED,
+  CLEAN_USERS,
 } from 'constants/actionTypes';
 import {
   STARTED, SUCCEDED, FAILED, FINISHED
@@ -97,6 +98,10 @@ const usersReducer = (state = initialState, action) => {
       };
 
       return { ...state, status: newStatus };
+    }
+
+    case CLEAN_USERS: {
+      return initialState;
     }
 
     default:

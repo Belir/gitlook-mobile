@@ -7,6 +7,7 @@ import {
   FETCH_REPO_INFO_SUCCEEDED,
   FETCH_REPO_INFO_FAILED,
   FETCH_REPO_INFO_FINISHED,
+  CLEAN_REPOSITORIES,
 } from 'constants/actionTypes';
 import {
   STARTED, SUCCEDED, FAILED, FINISHED
@@ -100,6 +101,10 @@ const repositoriesReducer = (state = initialState, action) => {
       };
 
       return { ...state, status: newStatus };
+    }
+
+    case CLEAN_REPOSITORIES: {
+      return initialState;
     }
 
     default:
